@@ -1,19 +1,39 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-import TheWelcome from "./components/TheWelcome.vue";
+import Card from "./components/Card.vue";
+import Listings from "./components/Listings.vue";
 </script>
 
 <template>
-  <div class="bg-green-500 p-4 text-white">
-    <p class="text-xl">Hello, Vue with Tailwind and SASS!</p>
+  <div class="nav-section-container">
+    <div class="title-container">
+      <h1>Welcome to Dev Roles</h1>
+    </div>
+    <div class="search-field-container">
+      <input type="text" />
+    </div>
+    <h1 class="text-3xl font-bold underline">Hello from vue</h1>
   </div>
+  <Listings />
+  <!-- <Card /> -->
 </template>
 
-<style lang="scss" scoped>
-$primary-color: #94a99e;
+<style lang="scss">
+$secondary-color: #2985a9;
 
-p {
-  color: $primary-color;
-  font-weight: bold;
+.container {
+  padding: 20px;
+  // background-color: $secondary-color;
+  h1 {
+    color: rgb(153, 30, 30);
+  }
+}
+.nav-section-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: $secondary-color;
+  width: 50%;
+  margin: auto;
 }
 </style>
