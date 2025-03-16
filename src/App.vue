@@ -1,8 +1,10 @@
 <script setup>
 import { ref, reactive, onMounted } from "vue";
-// import Card from "./components/Card.vue";
+
 import Listings from "./components/Listings.vue";
 import roleData from "./data.json";
+
+// import bgHeader from "../public/images/bg-header-desktop.svg";
 // const roles = ref(roleData);
 const roles = ref([]);
 
@@ -13,7 +15,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="w-full hero h-30 bg-[url('./public/images/bg-header-desktop.svg')] bg-no-repeat bg-center bg-cover"
+    class="w-full hero h-30 bg-[url('/images/bg-header-desktop.svg')] bg-no-repeat bg-center bg-cover"
   >
     <div class="flex items-center justify-center pt-2">
       <h1
@@ -25,31 +27,12 @@ onMounted(() => {
         ></span>
       </h1>
     </div>
-
-    <!-- <div class="flex items-center justify-center mt-6">
-      <input
-        type="text"
-        placeholder="Enter text..."
-        class="w-80 px-4 py-2 text-white bg-[#4C4D4C] border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300 shadow-md"
-      />
-    </div> -->
   </div>
-  <!-- <Listings :roles="roles" class="bg-[#EEF6F6]" /> -->
-
   <Listings :roles="roles" class="bg-[#EEF6F6]" />
 </template>
 
 <style lang="scss">
-// $secondary-color: #2985a9;
 div {
   font-family: "Poppins", Geneva, Tahoma, sans-serif;
 }
-
-// .container {
-//   padding: 20px;
-//   background-color: $secondary-color;
-//   h1 {
-//     color: rgb(153, 30, 30);
-//   }
-// }
 </style>
