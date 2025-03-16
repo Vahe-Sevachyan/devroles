@@ -85,9 +85,6 @@ import { ref, computed } from "vue";
 const props = defineProps({
   roles: Array,
 });
-// defineProps({
-//   roles: Array,
-// });
 
 // Reactive State for Filters
 const selectedContracts = ref([]); // Holds selected contract types
@@ -115,12 +112,10 @@ const allLanguages = computed(() => {
 // Computed: Filtered Roles Based on Selection
 const filteredRoles = computed(() => {
   return props.roles.filter((role) => {
-    // 🔹 Check Contract Filter
     const matchesContract =
       selectedContracts.value.length === 0 ||
       selectedContracts.value.includes(role.contract);
 
-    // 🔹 Check Language Filter
     const matchesLanguage =
       selectedLanguages.value.length === 0 ||
       (role.languages &&

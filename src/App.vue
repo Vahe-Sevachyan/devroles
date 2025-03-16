@@ -38,7 +38,6 @@ onMounted(() => {
   <!-- <Listings :roles="roles" class="bg-[#EEF6F6]" /> -->
 
   <Listings2 :roles="roles" class="bg-[#EEF6F6]" />
-  <!-- <Card /> -->
 </template>
 
 <style lang="scss">
@@ -52,14 +51,5 @@ div {
 //   h1 {
 //     color: rgb(153, 30, 30);
 //   }
-// }
-// .nav-section-container {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   flex-direction: column;
-//   background-color: $secondary-color;
-//   width: 50%;
-//   margin: auto;
 // }
 </style>
