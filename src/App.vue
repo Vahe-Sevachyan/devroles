@@ -2,7 +2,7 @@
 import { ref, reactive, onMounted } from "vue";
 // import Card from "./components/Card.vue";
 import Listings from "./components/Listings.vue";
-import roleData from "../public/data.json";
+import roleData from "./data.json";
 // const roles = ref(roleData);
 const roles = ref([]);
 
@@ -13,7 +13,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="w-full h-30 bg-[url('../public/images/bg-header-desktop.svg')] bg-no-repeat bg-center bg-cover"
+    class="w-full hero h-30 bg-[url('./public/images/bg-header-desktop.svg')] bg-no-repeat bg-center bg-cover"
   >
     <div class="flex items-center justify-center pt-2">
       <h1
@@ -44,6 +44,7 @@ onMounted(() => {
 div {
   font-family: "Poppins", Geneva, Tahoma, sans-serif;
 }
+
 // .container {
 //   padding: 20px;
 //   background-color: $secondary-color;
