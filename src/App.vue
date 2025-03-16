@@ -1,19 +1,24 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted } from "vue";
 // import Card from "./components/Card.vue";
 import Listings from "./components/Listings.vue";
 import Listings2 from "./components/Listings2.vue";
 import roleData from "../public/data.json";
-const roles = ref(roleData);
+// const roles = ref(roleData);
+const roles = ref([]);
+
+onMounted(() => {
+  roles.value = roleData; // Assign the data after mounting
+});
 </script>
 
 <template>
   <div
-    class="w-full h-40 bg-[url('../public/images/bg-header-desktop.svg')] bg-no-repeat bg-center bg-cover"
+    class="w-full h-30 bg-[url('../public/images/bg-header-desktop.svg')] bg-no-repeat bg-center bg-cover"
   >
     <div class="flex items-center justify-center pt-2">
       <h1
-        class="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-900 relative"
+        class="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-900 relative mt-4"
       >
         Welcome to Dev Roles
         <span
@@ -22,17 +27,17 @@ const roles = ref(roleData);
       </h1>
     </div>
 
-    <div class="flex items-center justify-center mt-6">
+    <!-- <div class="flex items-center justify-center mt-6">
       <input
         type="text"
         placeholder="Enter text..."
         class="w-80 px-4 py-2 text-white bg-[#4C4D4C] border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300 shadow-md"
       />
-    </div>
+    </div> -->
   </div>
-  <Listings :roles="roles" class="bg-[#EEF6F6]" />
+  <!-- <Listings :roles="roles" class="bg-[#EEF6F6]" /> -->
 
-  <!-- <Listings2 :roles="roles" /> -->
+  <Listings2 :roles="roles" class="bg-[#EEF6F6]" />
   <!-- <Card /> -->
 </template>
 
