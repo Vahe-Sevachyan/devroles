@@ -1,8 +1,43 @@
 <template>
   <div class="flex items-center justify-center">
     <div class="text-center">
+      <!-- 🔽 Filter Section -->
       <div
-        v-for="role in roles"
+        class="mb-4 p-4 bg-[#F9FBFB] shadow-teal-800/60 shadow-lg mt-2 rounded-lg"
+      >
+        <h3 class="text-lg font-bold mb-2">Filter by Criteria:</h3>
+
+        <!-- 🔹 Filter by Contract Type -->
+        <div class="mb-2">
+          <label v-for="contract in contractTypes" :key="contract" class="mr-4">
+            <input
+              type="checkbox"
+              :value="contract"
+              v-model="selectedContracts"
+            />
+            {{ contract }}
+          </label>
+        </div>
+        <!-- 🔹 Filter by Language -->
+        <div>
+          <label v-for="language in allLanguages" :key="language" class="mr-4">
+            <input
+              type="checkbox"
+              :value="language"
+              v-model="selectedLanguages"
+            />
+            {{ language }}
+          </label>
+        </div>
+      </div>
+      <button
+        @click="clearFilters"
+        class="px-3 py-2 bg-red-500 text-white rounded mt-1 mb-2"
+      >
+        Clear Filters
+      </button>
+      <div
+        v-for="role in filteredRoles"
         :key="role.id"
         class="flex items-center w-170 bg-[#F9FBFB] shadow-teal-800/60 shadow-lg m-2 p-1.5"
       >
@@ -45,7 +80,47 @@
 </template>
 <script setup>
 import { defineProps } from "vue";
-defineProps({
+import { ref, computed } from "vue";
+const props = defineProps({
   roles: Array,
+});
+
+// Reactive State for Filters
+const selectedContracts = ref([]); // Holds selected contract types
+const selectedLanguages = ref([]); // Holds selected languages
+const clearFilters = () => {
+  selectedContracts.value = [];
+  selectedLanguages.value = [];
+};
+// Get all unique contract types
+const contractTypes = computed(() => {
+  return [...new Set(props.roles.map((role) => role.contract))];
+});
+
+// Get all unique languages
+const allLanguages = computed(() => {
+  const languagesSet = new Set();
+  props.roles.forEach((role) => {
+    if (role.languages) {
+      role.languages.forEach((lang) => languagesSet.add(lang));
+    }
+  });
+  return [...languagesSet];
+});
+
+// Computed: Filtered Roles Based on Selection
+const filteredRoles = computed(() => {
+  return props.roles.filter((role) => {
+    const matchesContract =
+      selectedContracts.value.length === 0 ||
+      selectedContracts.value.includes(role.contract);
+
+    const matchesLanguage =
+      selectedLanguages.value.length === 0 ||
+      (role.languages &&
+        role.languages.some((lang) => selectedLanguages.value.includes(lang)));
+
+    return matchesContract && matchesLanguage;
+  });
 });
 </script>

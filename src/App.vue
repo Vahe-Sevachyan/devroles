@@ -2,7 +2,6 @@
 import { ref, reactive, onMounted } from "vue";
 // import Card from "./components/Card.vue";
 import Listings from "./components/Listings.vue";
-import Listings2 from "./components/Listings2.vue";
 import roleData from "../public/data.json";
 // const roles = ref(roleData);
 const roles = ref([]);
@@ -37,7 +36,7 @@ onMounted(() => {
   </div>
   <!-- <Listings :roles="roles" class="bg-[#EEF6F6]" /> -->
 
-  <Listings2 :roles="roles" class="bg-[#EEF6F6]" />
+  <Listings :roles="roles" class="bg-[#EEF6F6]" />
 </template>
 
 <style lang="scss">
