@@ -1,28 +1,46 @@
 <script setup>
 import { ref, reactive } from "vue";
-import Card from "./components/Card.vue";
+// import Card from "./components/Card.vue";
 import Listings from "./components/Listings.vue";
-import roleData from "./assets/data.json";
+import Listings2 from "./components/Listings2.vue";
+import roleData from "../public/data.json";
 const roles = ref(roleData);
 </script>
 
 <template>
-  <div class="nav-section-container">
-    <div class="title-container">
-      <!-- <h1>Welcome to Dev Roles</h1> -->
+  <div
+    class="w-full h-40 bg-[url('../public/images/bg-header-desktop.svg')] bg-no-repeat bg-center bg-cover"
+  >
+    <div class="flex items-center justify-center pt-2">
+      <h1
+        class="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-900 relative"
+      >
+        Welcome to Dev Roles
+        <span
+          class="absolute inset-0 blur-md opacity-60 bg-gradient-to-r from-gray-600 to-gray-900"
+        ></span>
+      </h1>
     </div>
-    <div class="search-field-container">
-      <input type="text" />
+
+    <div class="flex items-center justify-center mt-6">
+      <input
+        type="text"
+        placeholder="Enter text..."
+        class="w-80 px-4 py-2 text-white bg-[#4C4D4C] border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300 shadow-md"
+      />
     </div>
-    <!-- <h1 class="text-3xl font-bold underline">Hello from vue</h1> -->
   </div>
-  <Listings :roles="roles" />
+  <Listings :roles="roles" class="bg-[#EEF6F6]" />
+
+  <!-- <Listings2 :roles="roles" /> -->
   <!-- <Card /> -->
 </template>
 
 <style lang="scss">
 // $secondary-color: #2985a9;
-
+div {
+  font-family: "Poppins", Geneva, Tahoma, sans-serif;
+}
 // .container {
 //   padding: 20px;
 //   background-color: $secondary-color;
